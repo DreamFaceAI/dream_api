@@ -121,7 +121,7 @@ dream_api = DreamAPI(api_key, log_file)
 
    2. Use `tts_pro` to get task_id with audio_id and text.
    ```
-   audio_id = "51a47229e5244920b69f0da4746d61f6"
+   audio_id = "6629c44402c44c0007351499"
    text = "Today is a beautiful day."
    task_id = dream_api.tts_pro(audio_id, text)
    ```
