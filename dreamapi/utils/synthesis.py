@@ -26,7 +26,6 @@ class Synthesis(object):
             Exception: If the API request fails or returns an error.
         """
         _validate_param(task_id)
-
         payload = {"taskId": task_id}
         return _post_request(self, API_URL, payload, DEFAULT_TIMEOUT)
 
@@ -45,16 +44,12 @@ class Synthesis(object):
             Exception: If the task fails or polling exceeds maximum attempts.
         """
         _validate_param(task_id)
-
         attempts = 0
-
         while attempts < max_attempts:
             try:
                 data = self.get_async_result(task_id)
                 logging.info(f"Polling attempt {attempts + 1}: {data}")
-
                 status = data.get("task", {}).get("status")
-
                 if status == 3:
                     logging.info("Task completed successfully.")
                     return data
@@ -68,6 +63,5 @@ class Synthesis(object):
             except Exception as e:
                 logging.error(f"Polling error: {e}")
                 raise
-
         logging.error("Polling exceeded maximum attempts. Task may still be in progress.")
         return {"error": "Polling timeout"}

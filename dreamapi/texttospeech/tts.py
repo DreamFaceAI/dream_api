@@ -21,20 +21,15 @@ class TextToSpeech(object):
             str: The Task ID of the initiated voice cloning task.
         """
         _validate_param(voice_url)
-
         endpoint = "voice_clone"
         url = API_PREFIX + endpoint
         payload = {"voiceUrl": voice_url}
-
         result = _post_request(self, url, payload, DEFAULT_TIMEOUT)
-
         task_id = result.get("taskId")
-
         if not task_id:
             logging.error("Task ID not found in the API response for voice cloning.")
             raise ValueError("Invalid response: Task ID missing.")
         logging.info(f"Voice Clone Task ID: {task_id}")
-
         return task_id
 
     def tts_clone(self, clone_id, text):
