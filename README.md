@@ -10,7 +10,7 @@ functionalities. The library is designed for seamless interaction with the Newpo
 ---
 
 ```
-python > 3.0
+python > 3.6
 requests
 ```
 
@@ -29,7 +29,7 @@ from dreamapi import DreamAPI
 
 api_key = "your_api_key"
 log_file = "path/to/your_log_file"
-dream_api = DreamApi(api_key, log_file)
+dream_api = DreamAPI(api_key, log_file)
 ```
 
 ## Method and Examples
@@ -121,7 +121,7 @@ dream_api = DreamApi(api_key, log_file)
 
    2. Use `tts_pro` to get task_id with audio_id and text.
    ```
-   audio_id = "51a47229e5244920b69f0da4746d61f6"
+   audio_id = "6629c44402c44c0007351499"
    text = "Today is a beautiful day."
    task_id = dream_api.tts_pro(audio_id, text)
    ```
@@ -151,12 +151,12 @@ dream_api = DreamApi(api_key, log_file)
    ```
    result example:
    ```
-   {"task": {"taskId": "9265d098699af2a0cee7734bbdabea22", "status": 3, "taskType": "voice_clone"}, "cloneId": 40dc8e22ab179680ec5480f9fb32d1ec}}
+   {"task": {"taskId": "9265d098699af2a0cee7734bbdabea22", "status": 3, "taskType": "voice_clone"}, "cloneId": "40dc8e22ab179680ec5480f9fb32d1ec"}}
    ```
    3. Use `tts_clone` to get tts_clone task_id with text and clone_id.
    ```
    text = "Today is a beautiful day."
-   clone_id = 40dc8e22ab179680ec5480f9fb32d1ec
+   clone_id = "40dc8e22ab179680ec5480f9fb32d1ec"
    task_id = dream_api.tts_clone(clone_id, text)
    ```
    4. Use `poll_task_result` to get result.
